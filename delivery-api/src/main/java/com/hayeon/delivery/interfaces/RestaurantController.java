@@ -1,7 +1,7 @@
 package com.hayeon.delivery.interfaces;
 
 import com.hayeon.delivery.domain.Restaurant;
-import com.hayeon.delivery.domain.RestaurantRepositoryImpl;
+import com.hayeon.delivery.domain.RestaurantRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,7 +12,7 @@ import java.util.List;
 @RestController
 public class RestaurantController {
     @Autowired
-    private RestaurantRepositoryImpl repository;
+    private RestaurantRepository repository;
 
     @GetMapping("/restaurants")
     public List<Restaurant> list(){
