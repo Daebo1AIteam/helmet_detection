@@ -1,5 +1,6 @@
 package com.hayeon.delivery.interfaces;
 
+import com.hayeon.delivery.application.RestaurantService;
 import com.hayeon.delivery.domain.MenuItem;
 import com.hayeon.delivery.domain.MenuItemRepository;
 import com.hayeon.delivery.domain.Restaurant;
@@ -14,22 +15,18 @@ import java.util.List;
 @RestController
 public class RestaurantController {
     @Autowired
-    private RestaurantRepository restaurantRepository;
+    private RestaurantService restaurantService;
 
-    @Autowired
-    private MenuItemRepository menuItemRepository;
 
     @GetMapping("/restaurants")
     public List<Restaurant> list(){
-        List<Restaurant> restaurants = restaurantRepository.findAll();
+        List<Restaurant> restaurants = restaurantService.getRestaurants();
         return restaurants;
     }
 
     @GetMapping("/restaurants/{id}")
     public Restaurant detail(@PathVariable("id") Long id){
-        Restaurant restaurant = restaurantRepository.findById(id);
-        List<MenuItem> menuItems = menuItemRepository.findAllByRestaurantId(id);
-        restaurant.setMenuItem(menuItems);
+        Restaurant restaurant = restaurantService.getRestaurant(id);
         return restaurant;
 
     }
