@@ -20,7 +20,7 @@ class RestaurantTest {
         Restaurant restaurant = new Restaurant("Hayeon","Seoul");
         assertThat(restaurant.getInfo(), is("Hayeon in Seoul"));
     }
-    
+
     private void assertThat(String name, ElementMatcher.Junction<Object> hayeon) {
     }
 
